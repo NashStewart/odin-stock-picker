@@ -1,4 +1,6 @@
 def stock_picker(prices)
+  day_to_buy = 1
+  day_to_sell = 2
   buy = prices[0] 
   sell = prices[1] 
   profit = 0
@@ -11,17 +13,19 @@ def stock_picker(prices)
         profit = potential_profit
         buy = price
         sell = next_price
+        day_to_buy = i
+        day_to_sell = j
       end
     end 
   end
-  "for a profit of $#{sell} - $#{buy} == $#{profit}"
+  [day_to_buy, day_to_sell]
 end
 
 prices1 = [17,3,6,9,15,8,6,1,10]
 prices2 = [1,3,6,9,15,8,6,1,17]
 prices3 = [10,3,6,9,15,8,6,17,1]
 
-p stock_picker(prices1)
-p stock_picker(prices2)
-p stock_picker(prices3)
+p stock_picker(prices1) # [1, 4]
+p stock_picker(prices2) # [0, 8]
+p stock_picker(prices3) # [1, 7]
 
